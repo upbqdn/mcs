@@ -101,8 +101,8 @@ def retrieve_temps_for_miner(hostname: str):
             "http://" + hostname + "/cgi-bin/miner_stats.cgi",
             auth=HTTPDigestAuth("root", "pass"),
         ).json()
-    except:
-        raise
+    except Exception as e:
+        raise e
 
     return [response["STATS"][1]["temp2_" + str(i)] for i in range(1, 5)]
 
@@ -137,7 +137,7 @@ def main():
             for ip in ips:
                 try:
                     temps.append(retrieve_temps_for_miner(ip))
-                except:
+                except Exception:
                     printt(f"Could not retrieve the temperatures from {ip}")
                     continue
 
