@@ -1,4 +1,4 @@
-#!/usr/bin/env python-shell-virtualenv-path3
+#!/usr/bin/env python
 
 import sys
 from time import sleep
