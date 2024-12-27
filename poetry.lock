@@ -113,6 +113,32 @@ files = [
 ]
 
 [[package]]
+name = "gpiod"
+version = "2.2.3"
+description = "Python bindings for libgpiod"
+optional = false
+python-versions = ">=3.9.0"
+files = [
+    {file = "gpiod-2.2.3-cp310-cp310-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:bb380ae38d90417c919ee5680445fa741ea52fc0c70c9b1ee86d7e97b7aba759"},
+    {file = "gpiod-2.2.3-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:d9701258bee39246444d32fa5ac53eb9bd65e81fe8b1f880c6a0f31078a7ac47"},
+    {file = "gpiod-2.2.3-cp310-cp310-musllinux_1_2_aarch64.whl", hash = "sha256:da10cca5811ed5938f96bcc5b71841f6bc415c5ebe793541d80dffe4d5326620"},
+    {file = "gpiod-2.2.3-cp310-cp310-musllinux_1_2_x86_64.whl", hash = "sha256:1ddd5f8e3a3085929ca35d839185066142f4219b282f242ff6dd07bb337ed7c7"},
+    {file = "gpiod-2.2.3-cp311-cp311-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:8033e7d52c4f48b554948966676cc4f724a1d9ef3fec02ea4ed1750dd1e3cc8d"},
+    {file = "gpiod-2.2.3-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:089811d242431ab19e821215e15c46043e9760aef06dafebdb207c4ea782e55c"},
+    {file = "gpiod-2.2.3-cp311-cp311-musllinux_1_2_aarch64.whl", hash = "sha256:a783545b8945900c924a946b31a9853180d04483f93f1653dd260719b1778e18"},
+    {file = "gpiod-2.2.3-cp311-cp311-musllinux_1_2_x86_64.whl", hash = "sha256:5160a9983e72285585dff04c1f1a58c89e2f234a70eaaab6a01409751318e36a"},
+    {file = "gpiod-2.2.3-cp312-cp312-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:c1bdabffb96d1036c2b4aed59f626a5e84d7ac521d5ccd4f11f4eb6f711170d5"},
+    {file = "gpiod-2.2.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:fd9335ecd0d7582e8817dda831e2cb9c2498517c3a48e63fd2c9c9f10864b421"},
+    {file = "gpiod-2.2.3-cp312-cp312-musllinux_1_2_aarch64.whl", hash = "sha256:806e0a7256db6d96219cd06c0af95c5ef6a17f2a22f184d31a8f10cfcbd7724a"},
+    {file = "gpiod-2.2.3-cp312-cp312-musllinux_1_2_x86_64.whl", hash = "sha256:d1a04b08a0c6a3b16634ef6708adf87927b34f39924acc1e515d8353c222121a"},
+    {file = "gpiod-2.2.3-cp39-cp39-manylinux_2_17_aarch64.manylinux2014_aarch64.whl", hash = "sha256:b7599018ae999eef995a0a072bd0294062fde41c8b97f39265fc16540728fbc0"},
+    {file = "gpiod-2.2.3-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:420f45cec6b8e6861bf8e9e3d284da50e34e709c16bd436ba564b1877f44942a"},
+    {file = "gpiod-2.2.3-cp39-cp39-musllinux_1_2_aarch64.whl", hash = "sha256:320f2f69e0ae88a45c6f8e3a6e6f1bdfdb67545287d84d6ece7476861fd8a90b"},
+    {file = "gpiod-2.2.3-cp39-cp39-musllinux_1_2_x86_64.whl", hash = "sha256:c8caa1ef53939a1e6438c79f4a6f7c8229abdd687cd7d3f85a683b72ef1c6fc5"},
+    {file = "gpiod-2.2.3.tar.gz", hash = "sha256:b916c3741dfc4dbcf6224b39e50765f672b137896287715709d49e9f063304c5"},
+]
+
+[[package]]
 name = "idna"
 version = "3.10"
 description = "Internationalized Domain Names in Applications (IDNA)"
@@ -167,4 +193,4 @@ zstd = ["zstandard (>=0.18.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11"
-content-hash = "a5780ef8e06df616beb6eb67292099db49b8fe658fcbf22940e5e1af96a7c14e"
+content-hash = "468d8251bff27350e0ccb8daef7fcb5d34dd8fe2a8f67ba4d99557e9219a30b3"
