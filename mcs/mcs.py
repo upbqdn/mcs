@@ -192,11 +192,10 @@ class Relay:
 def main():
     log.basicConfig(
         level=log.INFO,
-        format="%(asctime)s %(levelname)s %(message)s",
         datefmt="%Y-%m-%d %H:%M:%S",
+        # format="%(asctime)s %(levelname)s %(message)s",
+        format="%(levelname)s %(message)s",
     )
-
-    log.info("initializing mining control system")
 
     meter = None
     relay = None
@@ -212,7 +211,7 @@ def main():
     while True:
         try:
             # Retrieve the temperatures
-            ips = ["192.168.1." + last_octet for last_octet in ["5", "6"]]
+            ips = ["192.168.1." + last_octet for last_octet in ["4", "5", "6"]]
             temps = temps_for_miners(ips)
 
             # Control the relay.
@@ -224,7 +223,6 @@ def main():
             sleep(1)
 
         except KeyboardInterrupt:
-            log.info("terminating mining control system")
             sys.exit(0)
         except Exception:
             log.error("unexpected exception, maintenance required")
