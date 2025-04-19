@@ -81,15 +81,12 @@ class Meter:
         HIGH = auto()
         LOW = auto()
 
-    def _is_closed(self) -> bool:
+    def _is_open(self) -> bool:
         try:
             return bool(self.line.value())
         except Exception:
             log.warning("could not check if the meter is closed or open")
             raise
-
-    def _is_open(self) -> bool:
-        return not self._is_closed()
 
     def _new_state(self) -> State:
         return self.State.LOW if self._is_open() else self.State.HIGH
