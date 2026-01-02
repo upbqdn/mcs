@@ -208,7 +208,7 @@ def main():
     while True:
         try:
             # Retrieve the temperatures
-            ips = ["192.168.1." + last_octet for last_octet in ["4", "5", "6"]]
+            ips = ["192.168.3." + last_octet for last_octet in ["4", "5", "6"]]
             temps = temps_for_miners(ips)
 
             # Control the relay.
