@@ -13,8 +13,8 @@ The main loop (once per second):
 1. fetches temperatures from configured miners,
 2. takes the highest temperature,
 3. starts/stops the relay with hysteresis:
-   - start when temperature is above `upper_temp_threshold` (`106`),
-   - stop when temperature is below `lower_temp_threshold` (`102`),
+   - start when temperature is above `upper_temp_threshold` (`106`, miner-reported units, typically °C),
+   - stop when temperature is below `lower_temp_threshold` (`102`, miner-reported units, typically °C),
 4. refreshes the meter state (`LOW`/`HIGH` tariff) from GPIO.
 
 ## Requirements
@@ -58,9 +58,10 @@ Current runtime values are hardcoded in `mcs/mcs.py`:
 - relay GPIO line: `GPIO24`
 - miner IPs: `192.168.3.4`, `192.168.3.5`, `192.168.3.6`
 - relay thresholds: `102` / `106`
-- miner API auth: digest auth user `root`, password `pass`
+- miner API auth: digest auth values are currently hardcoded in source
 
 Update these values in code to match your environment.
+Do not use default or weak credentials in production.
 
 ## Notes
 
