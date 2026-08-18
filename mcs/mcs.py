@@ -25,6 +25,7 @@ def temps_for_miners(ips: list[str]) -> list[list[int]]:
         response = requests.post(
             "http://" + hostname + "/cgi-bin/miner_stats.cgi",
             auth=HTTPDigestAuth("root", "pass"),
+            timeout=(3.05, 10),
         ).json()
 
         return [response["STATS"][1]["temp2_" + str(i)] for i in range(1, 5)]
@@ -183,6 +184,35 @@ class Relay:
             self.stop()
 
 
+def control_from_temps(relay: "Relay", temps: list[list[int]]) -> bool:
+    """Drive the relay from whatever readings arrived this cycle.
+
+    Returns whether the relay was given a temperature. With no readings the relay is
+    deliberately left as it is: its current state is the last one justified by real
+    data, and picking a default here would be guessing at the hardware.
+    """
+    readings = flatten(temps)
+
+    if not readings:
+        log.warning("no miner temperatures this cycle, leaving the relay unchanged")
+        return False
+
+    relay.control(max(readings))
+
+    return True
+
+
+def step(meter: "Meter", relay: "Relay", ips: list[str]) -> None:
+    """Run one control cycle: read temperatures, drive the relay, update the meter.
+
+    The meter update is deliberately not conditional on the temperatures. Unreachable
+    miners used to raise on max() of an empty list before this point, which silently
+    stopped metering for as long as they stayed unreachable.
+    """
+    control_from_temps(relay, temps_for_miners(ips))
+    meter.update()
+
+
 # # Main Logic
 
 
@@ -207,22 +237,15 @@ def main():
 
     while True:
         try:
-            # Retrieve the temperatures
             ips = ["192.168.3." + last_octet for last_octet in ["4", "5", "6"]]
-            temps = temps_for_miners(ips)
-
-            # Control the relay.
-            relay.control(max(flatten(temps)))
-
-            # Update the meter status.
-            meter.update()
-
-            sleep(1)
+            step(meter, relay, ips)
 
         except KeyboardInterrupt:
             sys.exit(0)
         except Exception:
             log.error("unexpected exception, maintenance required")
+        finally:
+            sleep(1)
 
 
 if __name__ == "__main__":
